@@ -29,10 +29,10 @@ public class BeerController {
 
     @PostMapping
     public ResponseEntity<BeerDto> createBeer(BeerDto beerDto){
-        beerService.createNewBeer(beerDto);
+        BeerDto createdBeer = beerService.createNewBeer(beerDto);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location","/api/v1/beer/" + beerDto.getId());
-        return new ResponseEntity<>(beerDto, headers, HttpStatus.CREATED);
+        headers.add("Location","/api/v1/beer/" + createdBeer.getId());
+        return new ResponseEntity<>(createdBeer, headers, HttpStatus.CREATED);
     }
 
 }
